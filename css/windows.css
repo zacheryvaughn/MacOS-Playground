@@ -1,0 +1,141 @@
+/* COLORS */
+:root {
+    --titleBarFront: #3A3A3A;
+    --titleBarBack: #2A2A2A;
+    --windowBackground: #1A1A1A;
+    --font1: #222;
+    --font2: #fff;
+}
+
+/* NORMALIZE */
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+#drag-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/bigsur-dark.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.title-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    position: absolute;
+    height: 30px;
+    width: 100%;
+    background-color: var(--titleBarFront);
+    border-bottom: 1px solid #000000;
+    box-sizing: border-box;
+}
+
+.window {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background-color: var(--windowBackground);
+    border-radius: 10px;
+    box-shadow: 0px 10px 40px -10px #000000CC, 0px 0px 0px 0.5px #00000099;
+    overflow: hidden;
+}
+
+.window-border {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 0px 1px #ffffff33, inset 0px 1px 0px 0px #ffffff33;
+    pointer-events: none;
+}
+
+.window-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: #ffffff99;
+    user-select: none;
+}
+.resizer {
+    position: absolute;
+    z-index: 10;
+} .top-left {
+    width: 18px;
+    height: 18px;
+    top: -5px;
+    left: -5px;
+    border-radius: 0px 0px 10px 0px;
+    cursor: nwse-resize;
+} .top-right {
+    width: 18px;
+    height: 18px;
+    top: -5px;
+    right: -5px;
+    border-radius: 0px 0px 0px 10px;
+    cursor: nesw-resize;
+} .bottom-left {
+    width: 18px;
+    height: 18px;
+    bottom: -5px;
+    left: -5px;
+    border-radius: 0px 10px 0px 0px;
+    cursor: nesw-resize;
+} .bottom-right {
+    width: 18px;
+    height: 18px;
+    bottom: -5px;
+    right: -5px;
+    border-radius: 10px 0px 0px 0px;
+    cursor: nwse-resize;
+} .top {
+    width: calc(100% - 30px);
+    height: 6px;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: ns-resize;
+} .bottom {
+    width: calc(100% - 30px);
+    height: 6px;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: ns-resize;
+} .left {
+    width: 6px;
+    height: calc(100% - 30px);
+    left: -3px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: ew-resize;
+} .right {
+    width: 6px;
+    height: calc(100% - 30px);
+    right: -3px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: ew-resize;
+}

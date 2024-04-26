@@ -3,138 +3,73 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <title></title>
-    <link rel="icon" href="images/favicon.png" />
-    <link rel="stylesheet" href="styles.css" />
-    <script
-      src="https://kit.fontawesome.com/1df6dff833.js"
-      crossorigin="anonymous"
-    ></script>
+    <title>Draggable and Resizeable Windows</title>
+    <link rel="stylesheet" href="/css/windows.css" />
   </head>
   <body>
-    <div id="overlay"></div>
-    <header>
-      <div id="menu-bar">
-        <div id="menu-bar-left">
-          <div id="logo-container">
-            <i id="apple-logo" class="fa-brands fa-apple"></i>
-          </div>
-          <h3 id="menu-bar-name" class="page-link">Zac Vaughn</h3>
-          <a href="index.html" class="page-link">Home</a>
-          <a href="index.html" class="page-link">Profile</a>
-          <a href="index.html" class="page-link">Resume</a>
-          <a href="index.html" class="page-link">Contact</a>
-        </div>
-        <div id="menu-bar-right">
-          <a class="social-link" href=""><i class="fa-brands fa-linkedin-in"></i></a>
-          <a class="social-link" href=""><i class="fa-brands fa-github"></i></a>
-          <a class="social-link" href=""><i class="fa-brands fa-youtube"></i></a>
-          <a class="social-link" href=""><i class="fa-solid fa-magnifying-glass"></i></a>
-          <a id="control-center-button" class="social-link" href=""><i class="fa-solid fa-toggle-off"></i></a>
-          <div id="date-time-display">Date and Time will be shown here</div>
-        </div>
-      </div>
-      <div id="control-center-dropdown" class="dropdown">
-        <div id="theme-switch">
-          <div id="dark-theme" class="theme-option"><img class="theme-img" src="images/bigsur-dark.jpg" alt=""><p>Dark</p></div>
-          <div id="light-theme" class="theme-option"><img class="theme-img" src="images/bigsur-light.jpg" alt=""><p>Light</p></div>
-        </div>
-        <div id="brightness-slider-container" class="slider-container">
-          <p>Brightness</p>
-          <div id="brightness-track" class="slider-track">
-            <i class="fa-regular fa-sun"></i>
-            <div id="brightness-progress" class="slider-progress">
-              <div id="brightness-thumb" class="slider-thumb"></div>
-            </div>
-          </div>
-        </div>
-        <div id="magnification-slider-container" class="slider-container">
-          <p>Dock Magnification</p>
-          <div id="magnification-track" class="slider-track">
-            <i class="fa-solid fa-magnifying-glass-plus"></i>
-            <div id="magnification-progress" class="slider-progress">
-              <div id="magnification-thumb" class="slider-thumb"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
     <main>
-      <div class="overview-window">
-        <div class="overview-top-bar">
-          <div class="window-buttons">
-            <div class="button-red"><p>&#215</p></div>
-            <div class="button-yellow"><p>&#8722</p></div>
-            <div class="button-green"></div>
-          </div>
-          <h4 class="window-title">LingoMingle</h4>
-          <div class="top-bar-empty"></div>
-        </div>
-        <div class="overview-content">
-          <div class="overview-left">
-            <div class="empty-image-centering-div"></div>
-            <div id="imageViewer1" class="overview-image-container"></div>
-            <div class="overview-image-nav">
-              <i class="image-previous fa-solid fa-caret-left"></i>
-              <div class="image-counter">1/12</div>
-              <i class="image-next fa-solid fa-caret-right"></i>
+      <div id="drag-area">
+          <div class="window">
+            <div class="title-bar">
+              <!-- Title of Application/Folder Here -->
+              <p class="window-title">Window Title</p>
             </div>
+            <!-- Content of Window Here -->
+            <div class="window-content"></div>
+            <!-- Element for Light Border -->
+            <div class="window-border"></div>
+            <!-- Resize Edges/Corners -->
+            <div class="resizer top-left" data-type="top-left"></div>
+            <div class="resizer top-right" data-type="top-right"></div>
+            <div class="resizer bottom-left" data-type="bottom-left"></div>
+            <div class="resizer bottom-right" data-type="bottom-right"></div>
+            <div class="resizer top" data-type="top"></div>
+            <div class="resizer bottom" data-type="bottom"></div>
+            <div class="resizer left" data-type="left"></div>
+            <div class="resizer right" data-type="right"></div>
           </div>
-          <div class="overview-right">
-            <div class="overview-description">
-              <p>
-                Description for Lingomingle goes here.
-              </p>
+
+          <div class="window">
+            <div class="title-bar">
+              <!-- Title of Application/Folder Here -->
+              <p class="window-title">Window Title</p>
             </div>
-            <a href="https://lingomingle.com/" target="_blank"><div class="overview-button">View Project</div></a>
+            <!-- Content of Window Here -->
+            <div class="window-content"></div>
+            <!-- Element for Light Border -->
+            <div class="window-border"></div>
+            <!-- Resize Edges/Corners -->
+            <div class="resizer top-left" data-type="top-left"></div>
+            <div class="resizer top-right" data-type="top-right"></div>
+            <div class="resizer bottom-left" data-type="bottom-left"></div>
+            <div class="resizer bottom-right" data-type="bottom-right"></div>
+            <div class="resizer top" data-type="top"></div>
+            <div class="resizer bottom" data-type="bottom"></div>
+            <div class="resizer left" data-type="left"></div>
+            <div class="resizer right" data-type="right"></div>
           </div>
-        </div>
+
+          <div class="window">
+            <div class="title-bar">
+              <!-- Title of Application/Folder Here -->
+              <p class="window-title">Window Title</p>
+            </div>
+            <!-- Content of Window Here -->
+            <div class="window-content"></div>
+            <!-- Element for Light Border -->
+            <div class="window-border"></div>
+            <!-- Resize Edges/Corners -->
+            <div class="resizer top-left" data-type="top-left"></div>
+            <div class="resizer top-right" data-type="top-right"></div>
+            <div class="resizer bottom-left" data-type="bottom-left"></div>
+            <div class="resizer bottom-right" data-type="bottom-right"></div>
+            <div class="resizer top" data-type="top"></div>
+            <div class="resizer bottom" data-type="bottom"></div>
+            <div class="resizer left" data-type="left"></div>
+            <div class="resizer right" data-type="right"></div>
+          </div>
       </div>
     </main>
-    <footer id="dock-container">
-      <div id="dock">
-        <a href="index.html" class="dock-item invisible-dock-item"></a> 
-        <!-- Empty invisible item fixes an error on Safari -->
-        <a href="" class="dock-item"
-        ><img src="images/dock-icons/finder.png" alt=""
-        /><i class="fa-solid fa-circle"></i></a>
-        <a href="" class="dock-item"
-          ><img src="images/dock-icons/launchpad.png" alt=""
-        /><i class="fa-solid fa-circle"></i></a>
-        <a href="" class="dock-item"
-          ><img src="images/dock-icons/lingomingle.png" alt=""
-        /><i class="fa-solid fa-circle"></i></a>
-        <a href="" class="dock-item"
-          ><img src="images/dock-icons/safari.png" alt=""
-        /><i class="fa-solid fa-circle"></i></a>
-        <a href="" class="dock-item"
-          ><img src="images/dock-icons/photobooth.png" alt=""
-        /><i class="fa-solid fa-circle"></i></a>
-        <a href="" class="dock-item"
-          ><img src="images/dock-icons/terminal.png" alt=""
-        /><i class="fa-solid fa-circle"></i></a>
-        <a href="" class="dock-item"
-          ><img src="images/dock-icons/photos.png" alt=""
-        /><i class="fa-solid fa-circle"></i></a>
-        <a href="" class="dock-item"
-          ><img src="images/dock-icons/notes.png" alt=""
-        /><i class="fa-solid fa-circle"></i></a>
-        <a href="" class="dock-item"
-          ><img src="images/dock-icons/settings.png" alt=""
-        /><i class="fa-solid fa-circle"></i></a>
-        <span id="dock-divider"></span>
-        <a href="" class="dock-item"
-          ><img src="images/dock-icons/trash-full.png" alt=""
-        /></a>
-        <!-- Empty invisible item fixes an error on Safari -->
-        <a href="index.html" class="dock-item invisible-dock-item"></a> 
-      </div>
-    </footer>
-    <script src="js/script.js"></script>
-    <script src="js/dock.js"></script>
-    <script src="js/window.js"></script>
-    <script src="js/dropdown.js"></script>
+    <script src="/js/windows.js"></script>
   </body>
 </html>
