@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Draggable and Resizeable Windows</title>
+    <title>MacOS GUI Simulation</title>
     <link rel="stylesheet" href="css/menubar.css">
     <link rel="stylesheet" href="css/windows.css" />
     <link rel="stylesheet" href="css/dock.css">
@@ -15,7 +15,7 @@
     </header>
     <main>
       <div id="drag-area">
-          <div class="window">
+          <div id="finder-window" class="window">
             <div class="title-bar">
               <div class="window-controls">
                 <div class="window-exit window-control"><img src="images/exit-icon.png" alt=""></div>
@@ -23,59 +23,7 @@
                 <div class="window-expand window-control"><img src="images/expand-icon.png" alt=""></div>
               </div>
               <!-- Title of Application/Folder Here -->
-              <p class="window-title">Window Title</p>
-              <div class="title-bar-aligner"></div>
-            </div>
-            <!-- Content of Window Here -->
-            <div class="window-content"></div>
-            <!-- Element for Light Border -->
-            <div class="window-border"></div>
-            <!-- Resize Edges/Corners -->
-            <div class="resizer top-left" data-type="top-left"></div>
-            <div class="resizer top-right" data-type="top-right"></div>
-            <div class="resizer bottom-left" data-type="bottom-left"></div>
-            <div class="resizer bottom-right" data-type="bottom-right"></div>
-            <div class="resizer top" data-type="top"></div>
-            <div class="resizer bottom" data-type="bottom"></div>
-            <div class="resizer left" data-type="left"></div>
-            <div class="resizer right" data-type="right"></div>
-          </div>
-
-          <div class="window">
-            <div class="title-bar">
-              <div class="window-controls">
-                <div class="window-exit window-control"><img src="images/exit-icon.png" alt=""></div>
-                <div class="window-minimize window-control"><img src="images/minimize-icon.png" alt=""></div>
-                <div class="window-expand window-control"><img src="images/expand-icon.png" alt=""></div>
-              </div>
-              <!-- Title of Application/Folder Here -->
-              <p class="window-title">Window Title</p>
-              <div class="title-bar-aligner"></div>
-            </div>
-            <!-- Content of Window Here -->
-            <div class="window-content"></div>
-            <!-- Element for Light Border -->
-            <div class="window-border"></div>
-            <!-- Resize Edges/Corners -->
-            <div class="resizer top-left" data-type="top-left"></div>
-            <div class="resizer top-right" data-type="top-right"></div>
-            <div class="resizer bottom-left" data-type="bottom-left"></div>
-            <div class="resizer bottom-right" data-type="bottom-right"></div>
-            <div class="resizer top" data-type="top"></div>
-            <div class="resizer bottom" data-type="bottom"></div>
-            <div class="resizer left" data-type="left"></div>
-            <div class="resizer right" data-type="right"></div>
-          </div>
-
-          <div class="window front">
-            <div class="title-bar">
-              <div class="window-controls">
-                <div class="window-exit window-control"><img src="images/exit-icon.png" alt=""></div>
-                <div class="window-minimize window-control"><img src="images/minimize-icon.png" alt=""></div>
-                <div class="window-expand window-control"><img src="images/expand-icon.png" alt=""></div>
-              </div>
-              <!-- Title of Application/Folder Here -->
-              <p class="window-title">Window Title</p>
+              <p class="window-title">Finder</p>
               <div class="title-bar-aligner"></div>
             </div>
             <!-- Content of Window Here -->
@@ -96,7 +44,7 @@
     </main>
     <footer>
       <div id="dock">
-        <img class="dock-item" src="images/appicons/finder.png" alt="">
+        <img id="finder-icon" class="dock-item" src="images/appicons/finder.png" alt="">
         <img class="dock-item" src="images/appicons/chrome.png" alt="">
         <img class="dock-item" src="images/appicons/vscode.png" alt="">
         <img class="dock-item" src="images/appicons/github.png" alt="">
@@ -110,5 +58,6 @@
     </footer>
     <script src="js/windows.js"></script>
     <script src="js/dock.js"></script>
+    <script src="js/appwindowlink.js"></script>
   </body>
 </html>

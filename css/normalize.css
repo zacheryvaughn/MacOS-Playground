@@ -38,6 +38,12 @@ header {
     top: 0;
     left: 0;
     width: 100%;
+    transition: 0.2s;
+}
+
+header.hide {
+    transform: translateY(-30px);
+    pointer-events: none;
 }
 
 main {
@@ -61,4 +67,10 @@ footer {
     align-items: center;
     justify-content: center;
     width: 100%;
+    transition: 0.2s;
+}
+
+footer.hide {
+    transform: translateY(110px);
+    pointer-events: none;
 }

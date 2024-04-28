@@ -17,11 +17,15 @@
 .dock-item {
     --base-size: 72px; /* Custom property for base size */
     --max-size: 120px; /* Custom property for maximum size */
-    --magnify-distance: 240px; /* Custom property for magnify distance from cursor */
+    --magnify-distance: 300px; /* Custom property for magnify distance from cursor */
     width: var(--base-size); /* Sets the initial width to match the custom "base size" property */
     height: var(--base-size); /* Sets the initial height to match the custom "base size" property */
     cursor: pointer;
-    transition: 0.08s linear;
+    transition: width 0.08s linear, height 0.08s linear;
+}
+
+.dock-item:active {
+    filter: brightness(50%);
 }
 
 #dock-divider {

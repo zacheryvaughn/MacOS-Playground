@@ -148,6 +148,10 @@ minimizeButtons.forEach(button => {
 
 expandButtons.forEach(button => {
     button.addEventListener('click', (e) => {
+        
+        document.querySelector('header').classList.toggle('hide');
+        document.querySelector('footer').classList.toggle('hide');
+
         const windowElement = e.target.closest('.window');
         windowElement.style.transition = 'width 0.2s, height 0.2s, top 0.2s, left 0.2s';
 
