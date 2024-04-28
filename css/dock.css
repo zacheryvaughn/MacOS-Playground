@@ -23,3 +23,10 @@
     cursor: pointer;
     transition: 0.08s linear;
 }
+
+#dock-divider {
+    width: 1px;
+    height: 100%;
+    background-color: #ffffff66;
+    margin: 0px 10px;
+}

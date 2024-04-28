@@ -31,19 +31,24 @@ const getDragAreaBounds = () => {
 };
 
 const updateZIndexes = (selectedWindow) => {
-    const currentIndex = parseInt(selectedWindow.style.zIndex);
-    if (currentIndex !== maxZIndex) {
+    // Always increment z-index and add 'front' class, reset others
+    if (selectedWindow.style.zIndex !== maxZIndex.toString()) {
         selectedWindow.style.zIndex = ++maxZIndex;
-        selectedWindow.classList.add('front');
-        windows.forEach(windowElement => {
-            if (windowElement !== selectedWindow) {
-                windowElement.classList.remove('front');
-            }
-        });
     }
+    selectedWindow.classList.add('front');
+    windows.forEach(windowElement => {
+        if (windowElement !== selectedWindow) {
+            windowElement.classList.remove('front');
+        }
+    });
 };
 
 dragArea.addEventListener('mousedown', (e) => {
+    // Remove 'front' class from all windows when clicking on the drag area
+    windows.forEach(windowElement => {
+        windowElement.classList.remove('front');
+    });
+
     const windowElement = e.target.closest('.window');
     if (!windowElement) return;
 
@@ -144,18 +149,15 @@ minimizeButtons.forEach(button => {
 expandButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         const windowElement = e.target.closest('.window');
-        // Apply transition only during expand/collapse
         windowElement.style.transition = 'width 0.2s, height 0.2s, top 0.2s, left 0.2s';
 
         if (windowElement.classList.contains('expand')) {
-            // If expanded, restore original dimensions
             windowElement.style.width = windowElement.dataset.originalWidth;
             windowElement.style.height = windowElement.dataset.originalHeight;
             windowElement.style.top = windowElement.dataset.originalTop;
             windowElement.style.left = windowElement.dataset.originalLeft;
             windowElement.classList.remove('expand');
         } else {
-            // If not expanded, save current dimensions and expand
             windowElement.dataset.originalWidth = windowElement.style.width;
             windowElement.dataset.originalHeight = windowElement.style.height;
             windowElement.dataset.originalTop = windowElement.style.top;
@@ -167,9 +169,8 @@ expandButtons.forEach(button => {
             windowElement.classList.add('expand');
         }
 
-        // Remove the transition after it's done to not affect dragging/resizing
         setTimeout(() => {
             windowElement.style.transition = '';
-        }, 200); // 200ms matches the duration of the transition
+        }, 200);
     });
 });
