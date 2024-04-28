@@ -4,8 +4,8 @@
     justify-content: center;
     flex-shrink: 0;
     width: calc(100% + 600px);
-    height: calc(100% + 270px);
-    margin-top: 330px;
+    height: calc(100% + 271px);
+    margin-top: 329px;
 }
 
 .title-bar {
