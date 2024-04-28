@@ -32,12 +32,12 @@ const getDragAreaBounds = () => {
 
 const updateZIndexes = (selectedWindow) => {
     const currentIndex = parseInt(selectedWindow.style.zIndex);
-    if (currentIndex !== maxZIndex) { // Only adjust if not already the highest
-        selectedWindow.style.zIndex = maxZIndex;
+    if (currentIndex !== maxZIndex) {
+        selectedWindow.style.zIndex = ++maxZIndex;
+        selectedWindow.classList.add('front');
         windows.forEach(windowElement => {
-            const zIndex = parseInt(windowElement.style.zIndex);
-            if (windowElement !== selectedWindow && zIndex > currentIndex) {
-                windowElement.style.zIndex = zIndex - 1;
+            if (windowElement !== selectedWindow) {
+                windowElement.classList.remove('front');
             }
         });
     }
@@ -47,7 +47,7 @@ dragArea.addEventListener('mousedown', (e) => {
     const windowElement = e.target.closest('.window');
     if (!windowElement) return;
 
-    updateZIndexes(windowElement); // Update z-index on interaction
+    updateZIndexes(windowElement); // Update z-index and manage .front class
 
     const titleBar = e.target.closest('.title-bar');
     const resizer = e.target.closest('.resizer');
@@ -81,24 +81,24 @@ dragArea.addEventListener('mousedown', (e) => {
             const dy = e.clientY - resizeOriginY;
 
             if (currentResizer.includes('right')) {
-                windowElement.style.width = `${Math.max(100, windowElement.offsetWidth + dx)}px`;
+                windowElement.style.width = `${Math.max(280, windowElement.offsetWidth + dx)}px`;
                 resizeOriginX = e.clientX;
             }
             if (currentResizer.includes('bottom')) {
-                windowElement.style.height = `${Math.max(100, windowElement.offsetHeight + dy)}px`;
+                windowElement.style.height = `${Math.max(180, windowElement.offsetHeight + dy)}px`;
                 resizeOriginY = e.clientY;
             }
             if (currentResizer.includes('left')) {
-                const newWidth = Math.max(100, windowElement.offsetWidth - dx);
-                if (newWidth > 100) {
+                const newWidth = Math.max(280, windowElement.offsetWidth - dx);
+                if (newWidth > 280) {
                     windowElement.style.left = `${windowElement.offsetLeft + dx}px`;
                     windowElement.style.width = `${newWidth}px`;
                     resizeOriginX = e.clientX;
                 }
             }
             if (currentResizer.includes('top')) {
-                const newHeight = Math.max(100, windowElement.offsetHeight - dy);
-                if (newHeight > 100) {
+                const newHeight = Math.max(180, windowElement.offsetHeight - dy);
+                if (newHeight > 180) {
                     windowElement.style.top = `${windowElement.offsetTop + dy}px`;
                     windowElement.style.height = `${newHeight}px`;
                     resizeOriginY = e.clientY;
@@ -121,4 +121,55 @@ dragArea.addEventListener('mousedown', (e) => {
 
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
+});
+
+const exitButtons = document.querySelectorAll('.window-exit');
+const minimizeButtons = document.querySelectorAll('.window-minimize');
+const expandButtons = document.querySelectorAll('.window-expand');
+
+exitButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        const windowElement = e.target.closest('.window');
+        windowElement.classList.toggle('exit');
+    });
+});
+
+minimizeButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        const windowElement = e.target.closest('.window');
+        windowElement.classList.toggle('minimize');
+    });
+});
+
+expandButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        const windowElement = e.target.closest('.window');
+        // Apply transition only during expand/collapse
+        windowElement.style.transition = 'width 0.2s, height 0.2s, top 0.2s, left 0.2s';
+
+        if (windowElement.classList.contains('expand')) {
+            // If expanded, restore original dimensions
+            windowElement.style.width = windowElement.dataset.originalWidth;
+            windowElement.style.height = windowElement.dataset.originalHeight;
+            windowElement.style.top = windowElement.dataset.originalTop;
+            windowElement.style.left = windowElement.dataset.originalLeft;
+            windowElement.classList.remove('expand');
+        } else {
+            // If not expanded, save current dimensions and expand
+            windowElement.dataset.originalWidth = windowElement.style.width;
+            windowElement.dataset.originalHeight = windowElement.style.height;
+            windowElement.dataset.originalTop = windowElement.style.top;
+            windowElement.dataset.originalLeft = windowElement.style.left;
+            windowElement.style.width = '100vw';
+            windowElement.style.height = '100vh';
+            windowElement.style.top = '0';
+            windowElement.style.left = '0';
+            windowElement.classList.add('expand');
+        }
+
+        // Remove the transition after it's done to not affect dragging/resizing
+        setTimeout(() => {
+            windowElement.style.transition = '';
+        }, 200); // 200ms matches the duration of the transition
+    });
 });

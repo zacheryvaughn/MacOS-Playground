@@ -1,0 +1,25 @@
+#dock {
+    position: absolute;
+    bottom: 5px; /* change to "bottom:" to move it to the bottom */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* change to "flex-end" if on bottom */
+    gap: 4px;
+    height: 90px;
+    padding: 12px 6px;
+    background-color: #00000033;
+    backdrop-filter: blur(60px);
+    -webkit-backdrop-filter: blur(60px);
+    border-radius: 24px;
+    box-shadow: 0px 10px 40px -10px #000000CC, 0px 0px 0px 0.5px #00000099, inset 0px 0px 0px 1px #ffffff33, inset 0px 1px 0px 0px #ffffff33;
+}
+
+.dock-item {
+    --base-size: 72px; /* Custom property for base size */
+    --max-size: 120px; /* Custom property for maximum size */
+    --magnify-distance: 240px; /* Custom property for magnify distance from cursor */
+    width: var(--base-size); /* Sets the initial width to match the custom "base size" property */
+    height: var(--base-size); /* Sets the initial height to match the custom "base size" property */
+    cursor: pointer;
+    transition: 0.08s linear;
+}
